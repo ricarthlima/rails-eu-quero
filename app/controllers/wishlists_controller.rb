@@ -11,6 +11,8 @@ class WishlistsController < ApplicationController
   # GET /wishlists/1
   # GET /wishlists/1.json
   def show
+    @wishlist_id = params[:id].to_s
+    @items = Item.where("wishlist_id = '" + params[:id].to_s + "'")
   end
 
   # GET /wishlists/new

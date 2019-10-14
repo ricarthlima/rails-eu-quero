@@ -8,3 +8,115 @@
 <hr>
 
 <h5>Itens</h5>
+
+<table>
+  <thead>
+    <tr>
+      <th>Nome</th>
+      <th>Link img</th>
+      <th>Link prod</th>
+      <th>Preco</th>
+      <th>Desc</th>
+      <th>Wishlevel</th>
+      <th>Ativo</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @items.each do |item| %>
+      <tr>
+        <td><%= item.nome %></td>
+        <td><%= item.link_img %></td>
+        <td><%= item.link_prod %></td>
+        <td><%= item.preco %></td>
+        <td><%= item.desc %></td>
+        <td><%= item.wishlevel %></td>
+        <td><%= item.ativo %></td>
+        <td><%= link_to 'Show', item %></td>
+        <td><%= link_to 'Edit', edit_item_path(item) %></td>
+        <td><%= link_to 'Destroy', item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<button class = "btn botao-flutuante" data-toggle="modal" data-target="#formNewItem">
+  <center><i class="fas fa-plus"></i></center>
+</button>
+
+
+<!-- Modal -->
+<div class="modal fade" id="formNewItem" tabindex="-1" role="dialog" aria-labelledby="TituloModalCentralizado" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="TituloModalCentralizado">Adicionar lista de presentes</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <% item = Item.new %>
+      
+      <%= form_with(model: item, local: true) do |form| %>
+        <div class="modal-body">
+            <% if item.errors.any? %>
+              <div id="error_explanation">
+                <h2><%= pluralize(item.errors.count, "error") %> prohibited this item from being saved:</h2>
+          
+                <ul>
+                <% item.errors.full_messages.each do |message| %>
+                  <li><%= message %></li>
+                <% end %>
+                </ul>
+              </div>
+            <% end %>
+            
+            <%= form.hidden_field(:wishlist_id, :value => @wishlist.id) %>
+            
+            <div class="field">
+              <%= form.label :nome %>
+              <%= form.text_field :nome %>
+            </div>
+          
+            <div class="field">
+              <%= form.label :link_img %>
+              <%= form.text_field :link_img %>
+            </div>
+          
+            <div class="field">
+              <%= form.label :link_prod %>
+              <%= form.text_field :link_prod %>
+            </div>
+          
+            <div class="field">
+              <%= form.label :preco %>
+              <%= form.text_field :preco %>
+            </div>
+          
+            <div class="field">
+              <%= form.label :desc %>
+              <%= form.text_area :desc %>
+            </div>
+          
+            <div class="field">
+              <%= form.label :wishlevel %>
+              <%= form.number_field :wishlevel %>
+            </div>
+          
+            <div class="field">
+              <%= form.label :ativo %>
+              <%= form.check_box :ativo %>
+            </div>
+            
+        </div>
+        
+        <div class="modal-footer">
+            <%= form.submit "Criar item", class: "btn btn-primary" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

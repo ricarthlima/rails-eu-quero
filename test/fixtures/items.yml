@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  nome: MyString
+  link_img: MyString
+  link_prod: MyString
+  preco: 1.5
+  desc: MyText
+  wishlevel: 1
+  ativo: false
+
+two:
+  nome: MyString
+  link_img: MyString
+  link_prod: MyString
+  preco: 1.5
+  desc: MyText
+  wishlevel: 1
+  ativo: false

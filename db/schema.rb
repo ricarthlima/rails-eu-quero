@@ -10,11 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_14_053025) do
+ActiveRecord::Schema.define(version: 2019_10_14_072322) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
+
+  create_table "items", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "nome"
+    t.string "link_img"
+    t.string "link_prod"
+    t.float "preco"
+    t.text "desc"
+    t.integer "wishlevel"
+    t.boolean "ativo"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.uuid "wishlist_id"
+    t.index ["wishlist_id"], name: "index_items_on_wishlist_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -38,5 +52,6 @@ ActiveRecord::Schema.define(version: 2019_10_14_053025) do
     t.index ["user_id"], name: "index_wishlists_on_user_id"
   end
 
+  add_foreign_key "items", "wishlists"
   add_foreign_key "wishlists", "users"
 end
