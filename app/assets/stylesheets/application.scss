@@ -13,3 +13,24 @@
  *= require_tree .
  *= require_self
  */
+
+@import 'bootstrap';
+
+body{
+    background-color: #bfe1ff;
+}
+
+.img-devise-logo{
+    max-width: 325px;
+    width: 100%;
+}
+
+.devise-container{
+    max-width: 350px;
+    min-height: 200px;
+    background-color: white;
+    border-radius: 30px;
+    
+    margin-top: 15px;
+    padding: 20px;
+}

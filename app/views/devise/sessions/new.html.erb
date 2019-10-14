@@ -1,26 +1,34 @@
-<h2>Log in</h2>
+<center style = "margin-top: 50px">
+  <img src = "/assets/logo.png" class = "img-devise-logo">
+  
+  <div class = "devise-container">
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <div class="field">
+        <small><%= f.label :email %></small><br />
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control", placeholder: "E-mail" %>
+      </div>
+    
+      <div class="field" style = "margin-top: 7px;">
+        <small>Senha:</small><br />
+        <%= f.password_field :password, autocomplete: "current-password", class: "form-control", placeholder: "Senha" %>
+        <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
+          <small><%= link_to "Esqueceu sua senha?", new_password_path(resource_name) %><br /></small>
+        <% end %>
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+      </div>
+    
+      <% if devise_mapping.rememberable? %>
+        <div class="field">
+          <%= f.check_box :remember_me %>
+          <small>Lembrar de mim</small>
+        </div>
+      <% end %>
+    
+      <div class="actions">
+        <%= f.submit "Entrar", class: "btn btn-primary", style: "margin-top: 10px" %>
+      </div>
+    <% end %>
+    <hr>
+    <%= render "devise/shared/links" %>
   </div>
-
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
-
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
-    </div>
-  <% end %>
-
-  <div class="actions">
-    <%= f.submit "Log in" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</center>
