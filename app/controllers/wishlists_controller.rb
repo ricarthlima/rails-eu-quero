@@ -22,6 +22,8 @@ class WishlistsController < ApplicationController
 
   # GET /wishlists/1/edit
   def edit
+    redirect_to root_path
+    flash[alert] = "Em breve."
   end
 
   # POST /wishlists

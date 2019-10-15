@@ -19,6 +19,8 @@ class ItemsController < ApplicationController
 
   # GET /items/1/edit
   def edit
+    redirect_to root_path
+    flash[alert] = "Em breve."
   end
 
   # POST /items
@@ -32,8 +34,12 @@ class ItemsController < ApplicationController
         format.html { redirect_to @wishlist, notice: 'Item was successfully created.' }
         format.json { render :show, status: :created, location: @item }
       else
-        format.html { render :new }
-        format.json { render json: @item.errors, status: :unprocessable_entity }
+        format.html { redirect_to @wishlist }
+        
+        flash[alert] = ""
+        @item.errors.each do |key|
+          flash[alert] = flash[alert] + " " + @item.errors[key][0]
+        end
       end
     end
   end

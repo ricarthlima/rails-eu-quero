@@ -1,5 +1,5 @@
 <div class = "">
-<center><h1 style = "margin-bottom: 25px;">Listas de Presentes</h1></center>
+<h1 style = "margin-bottom: 25px;">Listas de Desejo</h1>
 
 <table class = "table table-responsive-sm table-hover table-striped table-bordered">
   <thead style = "background-color: #1a96ff; color: white;">
@@ -7,19 +7,18 @@
       <th scope="col"><center>Nome</center></th>
       <th scope="col"><center>Descrição</center></th>
       <th scope="col"><center>Link Personalizado</center></th>
-      <th colspan="3"><center>Configurações</center></th>
+      <th colspan="2"><center>Configurações</center></th>
     </tr>
   </thead>
 
   <tbody>
-    <% @wishlists.each do |wishlist| %>
+    <% @wishlists.each do |i| %>
       <tr>
-        <td><strong><%= wishlist.nome %></strong></td>
-        <td><%= wishlist.desc %></td>
-        <td><%= wishlist.link %></td>
-        <td><%= link_to 'Mostrar', wishlist %></td>
-        <td><%= link_to 'Editar', edit_wishlist_path(wishlist) %></td>
-        <td><%= link_to 'Excluir', wishlist, method: :delete, data: { confirm: 'Tem certeza?' } %></td>
+        <td><strong><%= link_to i.nome, i %></strong></td>
+        <td><%= i.desc %></td>
+        <td><%= i.link %></td>
+        <td><%= link_to 'Editar', edit_wishlist_path(i) %></td>
+        <td><%= link_to 'Excluir', i, method: :delete, data: { confirm: 'Tem certeza?' } %></td>
       </tr>
     <% end %>
   </tbody>
