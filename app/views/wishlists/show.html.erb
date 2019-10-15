@@ -5,7 +5,8 @@
   <hr>
   <h4>Informações da Lista: </h4>  
   <strong>Nome: </strong><%= @wishlist.nome %><br/>
-  <strong>Descrição: </strong><%= @wishlist.desc %>
+  <strong>Descrição: </strong><%= @wishlist.desc %><br/>
+  <strong>Link para compartilhar: </strong> <a href = <%= root_path + current_user.username + "/" + @wishlist.link %> target = "_blank"><%= root_path + current_user.username + "/" + @wishlist.link %></a>
   
   <hr>
   
@@ -93,7 +94,7 @@
           
             <div class="field">
               <small>Preço:</small> <br />
-              <%= form.text_field :preco, class: "form-control" %>
+              <%= form.number_field :preco, class: "form-control" %>
             </div>
           
             <div class="field">
@@ -103,12 +104,12 @@
           
             <div class="field">
               <small>Nível de Desejo:</small> <br />
-              <%= form.number_field :wishlevel, class: "form-control" %>
+              <%= form.range_field :wishlevel, in: 1..6, value: 4, class: "form-control" %>
             </div>
           
             <div class="field">
               <small>Ativo?</small> <br />
-              <%= form.check_box :ativo %>
+              <%= form.check_box :ativo, checked: true %>
             </div>
 
         </div>
