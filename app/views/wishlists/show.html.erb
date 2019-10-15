@@ -1,5 +1,3 @@
-<%= render "shared/navbar" %>
-
 <p>
   <h2><%= @wishlist.nome %></h2>
   <%= @wishlist.desc %>
@@ -7,35 +5,32 @@
 
 <hr>
 
-<h5>Itens</h5>
-
-<table>
-  <thead>
+<table class = "table table-sm table-responsive table-hover table-striped table-bordered">
+  <thead style = "background-color: #1a96ff; color: white;">
     <tr>
-      <th>Nome</th>
-      <th>Link img</th>
-      <th>Link prod</th>
-      <th>Preco</th>
-      <th>Desc</th>
-      <th>Wishlevel</th>
-      <th>Ativo</th>
-      <th colspan="3"></th>
+      <th scope="col" style = "min-width: 175px;"><center>Nome</center></th>
+      <th scope="col"><center>Imagem</center></th>
+      <th scope="col"><center>Link</center></th>
+      <th scope="col"><center>Preço</center></th>
+      <th scope="col"><center>Descrição</center></th>
+      <th scope="col"><center>Nível de Desejo</center></th>
+      <th scope="col"><center>Ativo</center></th>
+      <th colspan="2"><center>Configurações</center></th>
     </tr>
   </thead>
 
   <tbody>
     <% @items.each do |item| %>
       <tr>
-        <td><%= item.nome %></td>
-        <td><%= item.link_img %></td>
-        <td><%= item.link_prod %></td>
-        <td><%= item.preco %></td>
-        <td><%= item.desc %></td>
+        <td><strong><%= item.nome %></strong></td>
+        <td><center><img width = "150" height = "auto" src=<%= item.link_img %>></center></td>
+        <td><small><a href = <%= item.link_prod %>><%= item.link_prod %></a></small></td>
+        <td><strong><%= number_to_currency(item.preco, unit: "R$", separator: ",", delimiter: ".") %></strong></td>
+        <td><small><%= item.desc %></small></td>
         <td><%= item.wishlevel %></td>
-        <td><%= item.ativo %></td>
-        <td><%= link_to 'Show', item %></td>
-        <td><%= link_to 'Edit', edit_item_path(item) %></td>
-        <td><%= link_to 'Destroy', item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><center><%= trueToSim(item.ativo) %></center></td>
+        <td><%= link_to 'Editar', edit_item_path(item) %></td>
+        <td><%= link_to 'Excluir', item, method: :delete, data: { confirm: 'Tem certeza?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -53,7 +48,7 @@
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="TituloModalCentralizado">Adicionar lista de presentes</h5>
+        <h5 class="modal-title" id="TituloModalCentralizado">Adicionar itens em '<strong><%= @wishlist.nome %></strong>'</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -77,40 +72,40 @@
             <%= form.hidden_field(:wishlist_id, :value => @wishlist.id) %>
             
             <div class="field">
-              <%= form.label :nome %>
-              <%= form.text_field :nome %>
+              <small>Nome:</small> <br />
+              <%= form.text_field :nome, class: "form-control" %>
             </div>
           
             <div class="field">
-              <%= form.label :link_img %>
-              <%= form.text_field :link_img %>
+              <small>Link da Imagem:</small> <br />
+              <%= form.text_field :link_img, class: "form-control" %>
             </div>
           
             <div class="field">
-              <%= form.label :link_prod %>
-              <%= form.text_field :link_prod %>
+              <small>Link do Produto:</small> <br />
+              <%= form.text_field :link_prod, class: "form-control" %>
             </div>
           
             <div class="field">
-              <%= form.label :preco %>
-              <%= form.text_field :preco %>
+              <small>Preço:</small> <br />
+              <%= form.text_field :preco, class: "form-control" %>
             </div>
           
             <div class="field">
-              <%= form.label :desc %>
-              <%= form.text_area :desc %>
+              <small>Descrição:</small> <br />
+              <%= form.text_area :desc, class: "form-control" %>
             </div>
           
             <div class="field">
-              <%= form.label :wishlevel %>
-              <%= form.number_field :wishlevel %>
+              <small>Nível de Desejo:</small> <br />
+              <%= form.number_field :wishlevel, class: "form-control" %>
             </div>
           
             <div class="field">
-              <%= form.label :ativo %>
+              <small>Ativo?</small> <br />
               <%= form.check_box :ativo %>
             </div>
-            
+
         </div>
         
         <div class="modal-footer">

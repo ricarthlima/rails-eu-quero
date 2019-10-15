@@ -1,0 +1,64 @@
+<!-- Botão para acionar modal -->
+<button type="button" class="btn btn-primary hidden" data-toggle="modal" data-target="#ModalAlert" id = "alertHiddenButton">
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="ModalAlert" tabindex="-1" role="dialog" aria-labelledby="TituloModalCentralizado" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+        <% if notice %>
+          <div class="alert alert-info alert-dismissible fade show" role="alert">
+            <%= notice %>
+          </div>
+        <% end %>
+        <% if alert%>
+          <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            <%= alert %>
+          </div>
+         <% end %>
+         
+        
+        <% if flash[alert]%>
+          <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <%= flash[alert] %>
+          </div>
+        <% end %>
+      </div>
+      
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Fechar</button>
+    </div>
+  </div>
+</div>
+</div>
+
+<% if notice or alert or flash[alert] %>
+    <script>
+        document.getElementById("alertHiddenButton").click()
+    </script>
+<% end %>
+
+
+
+
+
+
+
+<!--
+<% if notice %>
+      <div class="alert alert-info alert-dismissible fade show" role="alert">
+        <%= notice %>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+    <% end %>
+    <% if alert %>
+      <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        <%= alert %>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+ <% end %> -->

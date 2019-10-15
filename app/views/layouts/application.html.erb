@@ -9,8 +9,8 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     
     <!-- Favicon -->
-    <link rel="shortcut icon" href="/assets/logo.png" type="image/x-icon">
-    <link rel="icon" href="/assets/logo.png" type="image/x-icon">
+    <link rel="shortcut icon" href="/assets/briefing.png" type="image/x-icon">
+    <link rel="icon" href="/assets/briefing.png" type="image/x-icon">
     
     <!-- Importação do FontAwesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
@@ -18,24 +18,13 @@
   </head>
 
   <body>
-    <% if notice %>
-      <div class="alert alert-info alert-dismissible fade show" role="alert">
-        <%= notice %>
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-    <% end %>
-    <% if alert %>
-      <div class="alert alert-warning alert-dismissible fade show" role="alert">
-        <%= alert %>
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
+    <%= render "shared/alert" %> 
+    
+    <% if user_signed_in? %>
+      <%= render "shared/navbar" %>
     <% end %>
     
-    <div class = "container" style = "min-height: 90vh;">
+    <div class = "container dashboard-container" style = "min-height: 90vh;">
       <%= yield %>
     </div>
   </body>

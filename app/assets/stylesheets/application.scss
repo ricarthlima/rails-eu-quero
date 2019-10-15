@@ -16,6 +16,24 @@
 
 @import 'bootstrap';
 
+.navbar-custom{
+    margin-bottom: 20px;
+    box-shadow: 2px 1px 1px rgba(0,0,0,0.5);
+}
+
+a:link{
+    color: #1A96FF;
+}
+
+a:hover{
+    color: red;
+    background-color: #00000000;
+}
+
+a:visited{
+    color: #1A96FF;
+}
+
 body{
     background-color: #bfe1ff;
 }
@@ -35,21 +53,9 @@ body{
     padding: 20px;
 }
 
-
-@media(max-width: 575px){
-    .botao-flutuante{
-        position: fixed;
-    }
-}
-
-@media(min-width: 576px){
-    .botao-flutuante{
-        position: absolute;
-    }
-}
-
-
 .botao-flutuante{
+    position: fixed;
+    
     bottom: 24px;
     right: 24px;
     
@@ -72,4 +78,8 @@ body{
     position: relative;
     min-height: calc(100vh - 72px); 
     max-height: calc(100vh - 72px); 
+}
+
+.hidden{
+    display: none;
 }
