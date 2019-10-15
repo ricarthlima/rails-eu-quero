@@ -7,6 +7,12 @@
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-body">
+        <% if flash[alert]%>
+          <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <%= flash[alert] %>
+          </div>
+        <% end %>
+        
         <% if notice %>
           <div class="alert alert-info alert-dismissible fade show" role="alert">
             <%= notice %>
@@ -19,11 +25,7 @@
          <% end %>
          
         
-        <% if flash[alert]%>
-          <div class="alert alert-danger alert-dismissible fade show" role="alert">
-            <%= flash[alert] %>
-          </div>
-        <% end %>
+        
       </div>
       
       <div class="modal-footer">

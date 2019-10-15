@@ -1,0 +1,66 @@
+// Place all the styles related to the public_view controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.item-carrosel{
+    background: #18280b; 
+    height: auto; 
+    padding-top: 20px;
+}
+
+.img-carrosel{
+    max-height: 500px;
+    max-width: 90vw;
+}
+
+.grid-img{
+    max-height: 250px;
+    max-width: auto;
+}
+
+.grid-img-area{
+    height: 250px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.grid-col{
+    min-width: 250px; 
+    max-width: 250px; 
+    margin-top: 15px;
+}
+
+.grid-text-area{
+    height: 175px; 
+    margin-top: 10px; 
+    overflow-y:auto;
+}
+
+.caption-carrosel{
+    background: #00000026; 
+    margin-top: 20px;
+    padding-bottom: 40px;
+    position: static;
+}
+
+
+.public-list-container{
+    background-color: white;
+    padding: 25px;
+    
+    border-radius: 30px;
+    
+}
+
+a.btn:link{
+    color: white;
+}
+
+a:hover{
+    color: red;
+    background-color: #00000000;
+}
+
+a.btn:visited{
+    color: white;
+}

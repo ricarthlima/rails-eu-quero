@@ -1,0 +1,44 @@
+<%= render 'shared/navbar' %>
+
+<div class = "public-list-container">
+    <h1><%= @wishlist.nome %></h1>
+    <small>Por <%= @user.name %></small>
+    
+    <br/>
+    <%= @wishlist.desc %>
+</div>
+
+<hr>
+
+<div class = "public-list-container">
+    <center>
+    <% if @gifts.size > 0 %>
+      <div class = "row align-items-center justify-content-center justify-content-md-around">
+        <% loop do %>
+          <div class = "col align-self-center grid-col">
+            <center>
+              <% gift = @gifts[@i] %>
+              <div class = "grid-img-area">
+                <img class="img-fluid grid-img" src=<%= gift.link_img %> alt=<%= gift.nome %>>
+              </div>
+              
+              <div class = "grid-text-area">
+                <h6><%= gift.nome %></h6>
+                <small><%= gift.desc %></small>
+                <hr>
+                <a class = "btn btn-primary btn-sm" target = "_blank"  href=<%= gift.link_prod%>>
+                    <i class="fas fa-shopping-cart"></i>    
+                    <%=number_to_currency(gift.preco, unit: "R$", separator: ",", delimiter: "")%>
+                </a>
+            </center>
+          </div>
+          <% @i = @i + 1 %>
+          <% break if (@i >= @gifts.length) %> 
+        <% end %>
+      </div>
+    </div>
+    </center>
+  <% else %>
+    Nada aqui ainda.
+  <% end %>
+</div>
