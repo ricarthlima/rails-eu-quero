@@ -1,32 +1,35 @@
-<div class = "">
-<h1 style = "margin-bottom: 25px;">Listas de Desejo</h1>
-
-<table class = "table table-responsive-sm table-hover table-striped table-bordered">
-  <thead style = "background-color: #1a96ff; color: white;">
-    <tr>
-      <th scope="col"><center>Nome</center></th>
-      <th scope="col"><center>Descrição</center></th>
-      <th scope="col"><center>Link Personalizado</center></th>
-      <th colspan="2"><center>Configurações</center></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @wishlists.each do |i| %>
+<div class = "white-container">
+  <h2>Gerenciar <strong>Listas de Desejos</strong></h2>
+  <small>Use a tabela abaixo para visualizar, editar ou excluir suas listas de desejos. Use o botão no canto inferior direito para adicionar uma nova lista de desejos.</small>
+  
+  <hr>
+  
+  <table class = "table table-responsive-sm table-hover table-striped table-bordered">
+    <thead style = "background-color: #1a96ff; color: white;">
       <tr>
-        <td><strong><%= link_to i.nome, i %></strong></td>
-        <td><%= i.desc %></td>
-        <td><%= i.link %></td>
-        <td><%= link_to 'Editar', edit_wishlist_path(i) %></td>
-        <td><%= link_to 'Excluir', i, method: :delete, data: { confirm: 'Tem certeza?' } %></td>
+        <th scope="col"><center>Nome</center></th>
+        <th scope="col"><center>Descrição</center></th>
+        <th scope="col"><center>Link Personalizado</center></th>
+        <th colspan="2"><center>Configurações</center></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<button class = "btn botao-flutuante" data-toggle="modal" data-target="#formNewWishlist">
-  <center><i class="fas fa-plus"></i></center>
-</button>
+    </thead>
+  
+    <tbody>
+      <% @wishlists.each do |i| %>
+        <tr>
+          <td><strong><%= link_to i.nome, i %></strong></td>
+          <td><%= i.desc %></td>
+          <td><a href = <%= current_user.username + "/" + i.link %> target = "_blank"><%= current_user.username + "/" + i.link %></a></td>
+          <td><%= link_to 'Editar', edit_wishlist_path(i) %></td>
+          <td><%= link_to 'Excluir', i, method: :delete, data: { confirm: 'Tem certeza?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  
+  <button class = "btn botao-flutuante" data-toggle="modal" data-target="#formNewWishlist">
+    <center><i class="fas fa-plus"></i></center>
+  </button>
 </div>
 
 

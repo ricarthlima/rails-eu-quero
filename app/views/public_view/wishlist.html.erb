@@ -1,4 +1,6 @@
-<%= render 'shared/navbar' %>
+<% if !user_signed_in? %>
+  <%= render 'shared/navbar' %>
+<% end %>
 
 <div class = "public-list-container">
     <h1><%= @wishlist.nome %></h1>

@@ -1,47 +1,52 @@
-<p>
-  <h2><%= @wishlist.nome %></h2>
-  <%= @wishlist.desc %>
-</p>
-
-<hr>
-
-<table class = "table table-sm table-responsive table-hover table-striped table-bordered">
-  <thead style = "background-color: #1a96ff; color: white;">
-    <tr>
-      <th scope="col" style = "min-width: 175px;"><center>Nome</center></th>
-      <th scope="col"><center>Imagem</center></th>
-      <th scope="col"><center>Link</center></th>
-      <th scope="col"><center>Preço</center></th>
-      <th scope="col"><center>Descrição</center></th>
-      <th scope="col"><center>Nível de Desejo</center></th>
-      <th scope="col"><center>Ativo</center></th>
-      <th colspan="2"><center>Configurações</center></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @items.each do |item| %>
+<div class = "white-container">
+  <h2>Gerenciar '<strong><%= @wishlist.nome %></strong>'</h2>
+  <small>Use a tabela abaixo para visualizar, editar ou excluir sua lista de desejos. Use o botão no canto inferior direito para adicionar uma nova lista de desejos.</small>
+    
+  <hr>
+  <h4>Informações da Lista: </h4>  
+  <strong>Nome: </strong><%= @wishlist.nome %><br/>
+  <strong>Descrição: </strong><%= @wishlist.desc %>
+  
+  <hr>
+  
+  <h4>Itens da Lista: </h4>
+  <table class = "table table-sm table-responsive table-hover table-striped table-bordered">
+    <thead style = "background-color: #1a96ff; color: white;">
       <tr>
-        <td><strong><%= item.nome %></strong></td>
-        <td><center><img width = "150" height = "auto" src=<%= item.link_img %>></center></td>
-        <td><small><a href = <%= item.link_prod %>><%= item.link_prod %></a></small></td>
-        <td><strong><%= number_to_currency(item.preco, unit: "R$", separator: ",", delimiter: ".") %></strong></td>
-        <td><small><%= item.desc %></small></td>
-        <td><%= item.wishlevel %></td>
-        <td><center><%= trueToSim(item.ativo) %></center></td>
-        <td><%= link_to 'Editar', edit_item_path(item) %></td>
-        <td><%= link_to 'Excluir', item, method: :delete, data: { confirm: 'Tem certeza?' } %></td>
+        <th scope="col" style = "min-width: 175px;"><center>Nome</center></th>
+        <th scope="col"><center>Imagem</center></th>
+        <th scope="col"><center>Link</center></th>
+        <th scope="col"><center>Preço</center></th>
+        <th scope="col"><center>Descrição</center></th>
+        <th scope="col"><center>Nível de Desejo</center></th>
+        <th scope="col"><center>Ativo</center></th>
+        <th colspan="2"><center>Configurações</center></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<button class = "btn botao-flutuante" data-toggle="modal" data-target="#formNewItem">
-  <center><i class="fas fa-plus"></i></center>
-</button>
-
+    </thead>
+  
+    <tbody>
+      <% @items.each do |item| %>
+        <tr>
+          <td><strong><%= item.nome %></strong></td>
+          <td><center><img width = "150" height = "auto" src=<%= item.link_img %>></center></td>
+          <td><small><a href = <%= item.link_prod %>><%= item.link_prod %></a></small></td>
+          <td><strong><%= number_to_currency(item.preco, unit: "R$", separator: ",", delimiter: ".") %></strong></td>
+          <td><small><%= item.desc %></small></td>
+          <td><%= item.wishlevel %></td>
+          <td><center><%= trueToSim(item.ativo) %></center></td>
+          <td><%= link_to 'Editar', edit_item_path(item) %></td>
+          <td><%= link_to 'Excluir', item, method: :delete, data: { confirm: 'Tem certeza?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  
+  <br>
+  
+  <button class = "btn botao-flutuante" data-toggle="modal" data-target="#formNewItem">
+    <center><i class="fas fa-plus"></i></center>
+  </button>
+</div>
 
 <!-- Modal -->
 <div class="modal fade" id="formNewItem" tabindex="-1" role="dialog" aria-labelledby="TituloModalCentralizado" aria-hidden="true">
