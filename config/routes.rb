@@ -5,4 +5,6 @@ Rails.application.routes.draw do
   root "dashboard#index"
   
   resources :wishlists
+  
+  post 'add_name' => "dashboard#add_name"
 end

@@ -1,0 +1,26 @@
+<center style = "margin-top: 50px;">
+  <img src = "/assets/logo.png" class = "img-devise-logo">
+  
+  <div class = "devise-container">
+    <%= form_for current_user, url: add_name_path, method: :post do |f| %>
+        <div class = "field">
+            <small><strong><%= f.label "Nome:" %></strong></small><br />
+            <%= f.text_field :name, autofocus: true, class: "form-control", placeholder: "Ex.: Ricarth Lima" %>
+          </div>
+          
+          <div class = "field">
+            <small><strong><%= f.label "Nome de usuário:"%></strong></small><br />
+            <%= f.text_field :username, class: "form-control", placeholder: "Ex.: ricarthlima" %>
+            <small style = "font-size: 0.65em">
+              - O link das suas listas conterá esse username.<br/>
+              - Permitido apenas letras minúsculas (sem espaços).
+            </small>
+          </div>
+        
+        <div class="actions">
+            <%= f.submit "Cadastrar", class: "btn btn-success", style: "margin-top: 15px" %>
+        </div>
+    <% end %>
+  </div>
+</center>
+
