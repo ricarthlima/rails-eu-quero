@@ -2,7 +2,7 @@ class Wishlist < ApplicationRecord
   belongs_to :user
   
   validates_presence_of :nome, message: "Nome não pode ser vazio."
-  validates_presence_of :desc, message: "Descrição não pode ser vazia."
+  #validates_presence_of :desc, message: "Descrição não pode ser vazia."
   validates_presence_of :link, message: "Link personalizado não pode ser vazio."
   
   

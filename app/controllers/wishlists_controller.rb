@@ -102,10 +102,14 @@ class WishlistsController < ApplicationController
     def validateCustomLink(link)
       valid = [true, ""]
       
-      # Só pode ter letras minúsculas sem acento
+      # Só pode ter letras minúsculas sem acento, números ou hífens
       link.each_char do |letra|
-        if letra.ord < 97 or letra.ord > 122
-          valid = [false, "O link deve conter apenas letras minúsculas."]
+        if !(
+            (letra.ord >= 97 and letra.ord <= 122) or 
+            (letra.ord == 45) or 
+            (letra.ord >= 48 and letra.ord <= 57)
+            )
+          valid = [false, "O link deve conter apenas letras minúsculas sem acento, números e hífens."]
         end
       end
       

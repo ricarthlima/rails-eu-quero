@@ -62,7 +62,7 @@
               <%= form.hidden_field(:user_id, :value => current_user.id) %>
             
               <div class="field">
-                <small>Nome: </small>
+                <small>Nome: <span class="badge badge-danger mb-sm">Obrigatório</span></small>
                 <%= form.text_field :nome, class: "form-control" %>
               </div>
             
@@ -72,10 +72,10 @@
               </div>
             
               <div class="field">
-                <small>Link Personalizado:</small>
+                <small>Link Personalizado: <span class="badge badge-danger mb-sm">Obrigatório</span></small>
                 <%= form.text_field :link, class: "form-control" %>
                 <small style = "font-size: 0.65em">
-                  - Permitido apenas letras minúsculas (sem espaços, números ou caracteres especiais). <br/>
+                  - Permitido apenas letras minúsculas sem acento, números e hífens. <br/>
                   - O link deve ser único.<br/>
                 </small>
               </div>

@@ -4,16 +4,16 @@
   <div class = "devise-container">
     <%= form_for current_user, url: add_name_path, method: :post do |f| %>
         <div class = "field">
-            <small><strong><%= f.label "Nome:" %></strong></small><br />
+            <small><strong><%= f.label "Nome:" %></strong> <span class="badge badge-danger mb-sm">Obrigatório</span></small><br />
             <%= f.text_field :name, autofocus: true, class: "form-control", placeholder: "Ex.: Ricarth Lima" %>
           </div>
           
           <div class = "field">
-            <small><strong><%= f.label "Nome de usuário:"%></strong></small><br />
+            <small><strong><%= f.label "Nome de usuário: "%></strong> <span class="badge badge-danger mb-sm">Obrigatório</span></small><br />
             <%= f.text_field :username, class: "form-control", placeholder: "Ex.: ricarthlima" %>
             <small style = "font-size: 0.65em">
               - O link das suas listas conterá esse username.<br/>
-              - Permitido apenas letras minúsculas (sem espaços).
+              - Permitido apenas letras minúsculas sem acentos, números e hífens (sem espaços).
             </small>
           </div>
         

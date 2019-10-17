@@ -78,12 +78,12 @@
             <%= form.hidden_field(:wishlist_id, :value => @wishlist.id) %>
             
             <div class="field">
-              <small>Nome:</small> <br />
+              <small>Nome: <span class="badge badge-danger mb-sm">Obrigatório</span></small> <br />
               <%= form.text_field :nome, class: "form-control" %>
             </div>
           
             <div class="field">
-              <small>Link da Imagem:</small> <br />
+              <small>Link da Imagem: <span class="badge badge-danger mb-sm">Obrigatório</span></small> <br />
               <%= form.text_field :link_img, class: "form-control" %>
             </div>
           
@@ -103,7 +103,7 @@
             </div>
           
             <div class="field">
-              <small>Nível de Desejo:</small> <br />
+              <small>Nível de Desejo: <span class="badge badge-danger mb-sm">Obrigatório</span></small> <br />
               <%= form.range_field :wishlevel, in: 1..6, value: 4, class: "form-control" %>
             </div>
           
